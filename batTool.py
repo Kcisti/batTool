@@ -49,6 +49,7 @@ def passkey(p):
         clear(), start()
 
 def start():
+    clear()
     p = input(f" {Wh}Key : {Gr}")
     passkey(p),main()
 
