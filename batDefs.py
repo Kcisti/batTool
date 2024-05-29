@@ -309,9 +309,6 @@ def dANDeMode():
 
     inp = input(f"\n{Wh} encode or decode: {Gr}")
     inp = inp.lower()
-    if inp != 'encode' or inp != 'decode':
-        print(f'\n{Re} !error:enter valid arguments!')
-        time.sleep(2), help()
     print(f'\n{Gr} info: recommended to use [space? space] to divide words')
     msg = input(f"\n{Wh} target msg for {inp}: {Gr}")
     msg = msg.lower()
