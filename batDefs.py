@@ -320,7 +320,7 @@ def dANDeMode():
                 encodeMsg = encodeMsg + e[msg[c]]
             except:
                 encodeMsg = encodeMsg + msg[c]
-        print(f' Encoded msg: {encodeMsg}')
+        print(f'{Wh} Encoded msg: {Gr}{encodeMsg}')
 
     elif inp == 'decode':
         msg = msg.split()
@@ -330,7 +330,7 @@ def dANDeMode():
                 decodeMsg = decodeMsg + d[msg[c]]
             except:
                 decodeMsg = decodeMsg + '?'
-        print(f' Decoded msg: {decodeMsg}')
+        print(f' {Wh}Decoded msg: {Gr}{decodeMsg}')
 
 
 options = [
@@ -361,14 +361,14 @@ options = [
     },
     {
         'num': 14,
-        'text': 'User Social Finder',
+        'text': 'Username Social Finder',
         'help' : 'Username Finder',
         'func': userSSMode
     },
     {
         'num': 15,
-        'text': 'Phone Number Tracker',
-        'help' : 'Phone Number Tracker',
+        'text': 'Phone Numbers Tracker',
+        'help' : 'Phone Numbers Tracker',
         'func': numberMode
     },
     {
@@ -385,7 +385,7 @@ options = [
     },
     {
         'num': 18,
-        'text': 'Doss Attack x200',
+        'text': 'Doss Attack x200 Packs',
         'help' : 'Doss Attack',
         'func': dossNNMode
     },
@@ -403,7 +403,7 @@ options = [
     },
     {
         'num': 21,
-        'text': 'Encode or Decode msg',
+        'text': 'Encode or Decode MSG',
         'help' : 'Encode or Decode Messages',
         'func': dANDeMode
     },
