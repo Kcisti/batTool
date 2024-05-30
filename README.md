@@ -16,6 +16,11 @@ I hope you enjoy it and find it as useful as I did creating it. Try out all its 
 
 If you have any questions or need help, don’t hesitate to contact me.
 
+# Tested on platforms:
+  - Windows
+  - Linux
+  - Termux
+
 # Collaborations
 This project has been possible thanks to the indirect collaboration of many other developers. If you are one of them and want to be sued, do not hesitate to contact me.
 
