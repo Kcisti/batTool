@@ -42,16 +42,6 @@ def option():
     for o in range(len(options)):
         print(f" {Wh}{options[o]['num']} {Gr}{options[o]['text']}")
 
-def passkey(p):
-    if p == "35bj84h":
-        clear()
-    else:
-        clear(), start()
-
-def start():
-    clear()
-    p = input(f" {Wh}Key : {Gr}")
-    passkey(p),main()
 
 def main():
     try:
@@ -64,7 +54,7 @@ def main():
 
 if __name__ == '__main__':
     try:
-        start()
+        main()
     except KeyboardInterrupt:
         print(f'\n {Re}!Exit!')
         time.sleep(2), exit()

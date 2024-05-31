@@ -1,13 +1,14 @@
-from src.files.intProMode import intProModeF
-from src.files.numberMode import numberModeF
-from src.files.userSSMode import userSSModeF
 from src.files.mirrorMode import mirrorModeF
-from src.files.instaSMode import instaSModeF
-from src.files.maskinMode import maskinModeF
 from src.files.dossNNMode import dossNNModeF
 from src.files.encrypMode import encrypModeF
-from src.files.downloMode import downloModeF
-from src.files.dANDenMode import dANDenModeF
+
+from src.files.intProTracker import intProModeF
+from src.files.phoneTracker import numberModeF
+from src.files.userOsint import userSSModeF
+from src.files.instaData import instaSModeF
+from src.files.urlMaskin import maskinModeF
+from src.files.youtubeDl import downloModeF
+from src.files.cryptoGraph import dANDenModeF
 
 Re, Gr, Wh, Ye= '\033[1;31m', '\033[1;32m', '\033[1;37m', '\033[1;33m'
 
