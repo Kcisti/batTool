@@ -1,4 +1,4 @@
-import time,os
+import time,os, pygame
 from batDefs import options
 
 Re, Gr, Wh, Ye= '\033[1;31m', '\033[1;32m', '\033[1;37m', '\033[1;33m'
@@ -43,9 +43,16 @@ def option():
         print(f" {Wh}{options[o]['num']} {Gr}{options[o]['text']}")
 
 
+def sound():
+    file_audio = 'sound/ad.mp3'
+    pygame.init()
+    pygame.mixer.init()
+    pygame.mixer.music.load(file_audio)
+    pygame.mixer.music.play()
+
 def main():
     try:
-        clear(),option()
+        clear(),sound(),option()
         opt = int(input(f"\n {Gr}Select Option : {Wh}"))
         execute_option(opt)
     except ValueError:
