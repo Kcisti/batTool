@@ -2,7 +2,7 @@ Re, Gr, Wh, Ye= '\033[1;31m', '\033[1;32m', '\033[1;37m', '\033[1;33m'
 import requests, instaloader
 from bs4 import BeautifulSoup
 
-def instaSModeF():
+def main():
     URL = "https://www.instagram.com/{}/"
     username = input(f"\n {Wh}Enter username target : {Gr}")
     print(f"\n{Gr} SHOW INFORMATION IG USER\n")

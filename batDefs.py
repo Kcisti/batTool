@@ -1,17 +1,17 @@
-from src.files.mirrorMode import mirrorModeF
-from src.files.dossNNMode import dossNNModeF
-from src.files.encrypMode import encrypModeF
-
-from src.files.intProTracker import intProModeF
-from src.files.phoneTracker import numberModeF
-from src.files.userOsint import userSSModeF
-from src.files.instaData import instaSModeF
-from src.files.urlMaskin import maskinModeF
-from src.files.youtubeDl import downloModeF
-from src.files.cryptoGraph import dANDenModeF
+#file10 not exist - is exitrrMODE
+#file11 not exist - is helprrMODE
+from src.files.file12 import main as intproMODEF
+from src.files.file13 import main as mirrorMODEF
+from src.files.file14 import main as userssMODEF
+from src.files.file15 import main as numberMODEF
+from src.files.file16 import main as instasMODEF
+from src.files.file17 import main as maskinMODEF
+from src.files.file18 import main as dossnnMODEF
+from src.files.file19 import main as encrypMODEF
+from src.files.file20 import main as downloMODEF
+from src.files.file21 import main as dandenMODEF
 
 Re, Gr, Wh, Ye= '\033[1;31m', '\033[1;32m', '\033[1;37m', '\033[1;33m'
-
 
 def is_option(func):
     def wrapper(*args, **kwargs):
@@ -21,50 +21,41 @@ def is_option(func):
 
 # FUNCTIONS FOR MENU
 @is_option
-def help():
+def helprrMODE():
     print(f'\n{Gr} HELP FOR BEGINNERS\n')
     for opt in options:
         print(f' {Wh}[{opt["num"]}]{Gr} {opt["help"]}')
 
-@is_option
-def IntProMode():
-    intProModeF()
+@is_option#12
+def intproMODE():intproMODEF()
 
-@is_option
-def numberMode():
-    numberModeF()
+@is_option#13
+def mirrorMODE():mirrorMODEF()
 
-@is_option
-def userSSMode():
-    userSSModeF()
+@is_option#14
+def userssMODE():userssMODEF()
 
-@is_option
-def mirrorMode():
-    mirrorModeF()
+@is_option#15
+def numberMODE():numberMODEF()
 
-@is_option
-def instaSMode():
-    instaSModeF()
+@is_option#16
+def instasMODE():instasMODEF()
 
-@is_option
-def maskinMode():
-    maskinModeF()
+@is_option#17
+def maskinMODE():maskinMODEF()
 
-@is_option
-def dossNNMode():
-    dossNNModeF()
+@is_option#18
+def dossnnMODE():dossnnMODEF()
 
-@is_option
-def encrypMode():
-    encrypModeF()
+@is_option#19
+def encrypMODE():encrypMODEF()
 
-@is_option
-def downloMode():
-    downloModeF()
+@is_option#20
+def downloMODE():downloMODEF()
 
-@is_option
-def dANDenMode():
-    dANDenModeF()
+@is_option#21
+def dandenMODE():dandenMODEF()
+
 
 
 options = [
@@ -78,67 +69,67 @@ options = [
         'num': 11,
         'text': 'Help for beginners Mode',
         'help' : 'Help',
-        'func': help
+        'func': helprrMODE
     },
     {
         'num': 12,
         'text': 'Internet Protocol Tracker',
         'help' : 'IP Tracker',
-        'func': IntProMode
+        'func': intproMODE
     },
     {
         'num': 13,
         'text': 'Your Internet Protocol',
         'help' : 'Show your IP',
-        'func': mirrorMode
+        'func': mirrorMODE
 
     },
     {
         'num': 14,
         'text': 'Username Social Finder',
         'help' : 'Username Finder',
-        'func': userSSMode
+        'func': userssMODE
     },
     {
         'num': 15,
         'text': 'Phone Numbers Tracker',
         'help' : 'Phone Numbers Tracker',
-        'func': numberMode
+        'func': numberMODE
     },
     {
         'num': 16,
         'text': 'Instagram Info & Scraping',
         'help' : 'Download IG Data',
-        'func': instaSMode
+        'func': instasMODE
     },
     {
         'num': 17,
         'text': 'Masking Phishing URL',
         'help' : 'Mask URL',
-        'func': maskinMode
+        'func': maskinMODE
     },
     {
         'num': 18,
         'text': 'Doss Attack x200 Packs',
         'help' : 'Doss Attack',
-        'func': dossNNMode
+        'func': dossnnMODE
     },
     {
         'num': 19,
         'text': 'Encrypted Chat Room',
         'help' : 'Encrypted Chat Room',
-        'func': encrypMode
+        'func': encrypMODE
     },
     {
         'num': 20,
         'text': 'Download Youtube Video',
         'help' : 'Download Youtube Video',
-        'func': downloMode
+        'func': downloMODE
     },
     {
         'num': 21,
         'text': 'Encode or Decode MSG',
         'help' : 'Encode or Decode Messages',
-        'func': dANDenMode
+        'func': dandenMODE
     },
 ]

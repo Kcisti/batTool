@@ -2,7 +2,7 @@ Re, Gr, Wh, Ye= '\033[1;31m', '\033[1;32m', '\033[1;37m', '\033[1;33m'
 import json,requests,time
 
 
-def intProModeF():
+def main():
     ip = input(f"{Wh}\n Enter IP target : {Gr}")  # INPUT IP ADDRESS
     print()
     print(f'{Gr} SHOW INFORMATION IP ADDRESS')

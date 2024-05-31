@@ -2,7 +2,7 @@ Re, Gr, Wh, Ye= '\033[1;31m', '\033[1;32m', '\033[1;37m', '\033[1;33m'
 import os, sys
 from pytube import YouTube
 
-def downloModeF():
+def main():
     links=list()
     # Example usage
     link = input(f'\n {Wh}target video URL: {Gr}')

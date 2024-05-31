@@ -1,7 +1,7 @@
 Re, Gr, Wh, Ye= '\033[1;31m', '\033[1;32m', '\033[1;37m', '\033[1;33m'
 import requests
 
-def userSSModeF():
+def main():
     try:
         username = input(f"\n {Wh}Enter Username : {Gr}")
         results = {}

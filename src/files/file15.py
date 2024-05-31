@@ -2,7 +2,7 @@ Re, Gr, Wh, Ye= '\033[1;31m', '\033[1;32m', '\033[1;37m', '\033[1;33m'
 import phonenumbers
 from phonenumbers import carrier, geocoder, timezone
 
-def numberModeF():
+def main():
     # INPUT NUMBER PHONE
     User_phone = input(f"\n {Wh}Enter number target {Gr}Ex +39xxxx {Wh}: {Gr}")
     default_region = "TO"  

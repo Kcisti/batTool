@@ -2,7 +2,7 @@ Re, Gr, Wh, Ye= '\033[1;31m', '\033[1;32m', '\033[1;37m', '\033[1;33m'
 from requests.utils import quote as urlEncode
 from json import loads
 from requests import get
-def maskinModeF():
+def main():
     class Doppelgang:
         def __init__(self,url,maskingDomain="google.com",keyword="login"):
             self.url = url
