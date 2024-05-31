@@ -1,4 +1,4 @@
-import time,os, pygame
+import time,os
 from batDefs import options
 
 Re, Gr, Wh, Ye= '\033[1;31m', '\033[1;32m', '\033[1;37m', '\033[1;33m'
