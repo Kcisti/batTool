@@ -52,7 +52,7 @@ def sound():
 
 def main():
     try:
-        clear(),sound(),option()
+        clear(),option()
         opt = int(input(f"\n {Gr}Select Option : {Wh}"))
         execute_option(opt)
     except ValueError:
