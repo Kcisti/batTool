@@ -10,7 +10,9 @@ from src.files.file18 import main as dossnnMODEF
 from src.files.file19 import main as encrypMODEF
 from src.files.file20 import main as downloMODEF
 from src.files.file21 import main as dandenMODEF
+from src.files.file22 import main as wificrMODEF
 
+import os
 Re, Gr, Wh, Ye= '\033[1;31m', '\033[1;32m', '\033[1;37m', '\033[1;33m'
 
 def is_option(func):
@@ -56,6 +58,8 @@ def downloMODE():downloMODEF()
 @is_option#21
 def dandenMODE():dandenMODEF()
 
+@is_option#22
+def wificrMODE():wificrMODEF()
 
 
 options = [
@@ -131,5 +135,11 @@ options = [
         'text': 'Encode or Decode MSG',
         'help' : 'Encode or Decode Messages',
         'func': dandenMODE
+    },
+    {
+        'num': 22,
+        'text': 'Wifi Bruteforce passkey',
+        'help' : 'Wifi Bruteforce attack',
+        'func': wificrMODE
     },
 ]

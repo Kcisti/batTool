@@ -1,4 +1,4 @@
-import time,os
+import time,os,pygame
 from batDefs import options
 
 Re, Gr, Wh, Ye= '\033[1;31m', '\033[1;32m', '\033[1;37m', '\033[1;33m'
@@ -42,7 +42,6 @@ def option():
     for o in range(len(options)):
         print(f" {Wh}{options[o]['num']} {Gr}{options[o]['text']}")
 
-
 def sound():
     file_audio = 'sound/ad.mp3'
     pygame.init()
@@ -61,10 +60,14 @@ def main():
 
 if __name__ == '__main__':
     try:
-        main()
+        try:
+            sound(), main()
+        except:
+            main()
     except KeyboardInterrupt:
         print(f'\n {Re}!Exit!')
         time.sleep(2), exit()
+
 
 
 
